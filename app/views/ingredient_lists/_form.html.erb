@@ -1,0 +1,25 @@
+<%= form_for(@ingredient_list) do |f| %>
+  <% if @ingredient_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ingredient_list.errors.count, "error") %> prohibited this ingredient_list from being saved:</h2>
+
+      <ul>
+      <% @ingredient_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ingredient_id %><br />
+    <%= f.number_field :ingredient_id %>
+    <% @ingredients.each do |ingredient| %>
+      <%= check_box_tag "option-#{ingredient.id}", ingredient.name, ingredient.id %>
+      <%= debug ingredient %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
