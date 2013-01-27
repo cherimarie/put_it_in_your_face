@@ -7,7 +7,7 @@ Given /^I enter in (\d+) survivor$/ do |number|
 end
 
 Given /^I specify medium\-sized$/ do
-  pending # express the regexp above with the code you wish you had
+  select("medium", :from => 'survivor_size')
 end
 
 When /^I click on 'feed me'$/ do
