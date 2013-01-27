@@ -2,8 +2,8 @@ Given /^I am on the apocalypse shopping list page$/ do
   visit "/apocalypse"
 end
 
-Given /^I enter in (\d+) survivor$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Given /^I enter in (\d+) survivor$/ do |number|
+  select("#{number}", :from => 'survivor_count')
 end
 
 Given /^I specify medium\-sized$/ do
