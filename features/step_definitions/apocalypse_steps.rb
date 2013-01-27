@@ -11,7 +11,7 @@ Given /^I specify medium\-sized$/ do
 end
 
 When /^I click on 'feed me'$/ do
-  pending # express the regexp above with the code you wish you had
+  click_button "feed me"
 end
 
 Then /^I should see 'Shopping List'$/ do
