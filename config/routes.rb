@@ -1,12 +1,11 @@
 PutItInYourFace::Application.routes.draw do
   resources :recipes
 
-
   resources :ingredient_lists
-
 
   resources :ingredients
 
+  resources :apocalypse
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

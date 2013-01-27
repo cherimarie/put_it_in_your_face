@@ -1051,3 +1051,8 @@ ActionController::RoutingError (No route matches [GET] "/coming-soon"):
 
 
   Rendered /Users/strand/.rvm/gems/ruby-1.9.3-p362/gems/actionpack-3.2.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (45.1ms)
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-01-27 13:47:58 -0800
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (2ms)

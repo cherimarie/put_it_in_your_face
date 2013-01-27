@@ -1,5 +1,5 @@
 Given /^I am on the apocalypse shopping list page$/ do
-  pending # express the regexp above with the code you wish you had
+  visit "/apocalypse"
 end
 
 Given /^I enter in (\d+) survivor$/ do |arg1|
