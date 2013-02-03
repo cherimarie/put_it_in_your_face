@@ -14,6 +14,8 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'capybara', '1.1.2'
+  gem 'factory_girl', '2.6.4'
 end
 
 # Gems used only for assets and not required
