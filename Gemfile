@@ -17,6 +17,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl', '2.6.4'
   gem 'launchy'
+  gem 'email_spec', '1.2.1'
 end
 
 gem 'devise', '2.1.0.rc'
