@@ -5,6 +5,7 @@ feature 'Signing in' do
     Factory(:user, :email => "slacker@meals.com")
   end
 
+  # FIXME Not working with full test run because of leaky tests
   scenario 'Signing in via confirmation' do
     open_email "slacker@meals.com", :with_subject => /Confirmation/
     click_first_link_in_email
