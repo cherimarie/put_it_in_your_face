@@ -4,7 +4,9 @@
   <tr>
     <th>Name</th>
     <th>Serving</th>
-    <th>Nutritional info</th>
+    <th>Calories</th>
+    <th>Protein (g)</th>
+    <th>Calcium (mg)</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,8 +16,9 @@
   <tr>
     <td><%= ingredient.name %></td>
     <td><%= ingredient.serving %></td>
-    <td><%= ingredient.nutritional_info %></td>
-    <td><%= link_to ingredient.name, ingredient %></td>
+    <td><%= ingredient.calories %></td>
+    <td><%= ingredient.protein %></td>
+    <td><%= ingredient.calcium %></td>
     <td><%= link_to 'Show', ingredient %></td>
     <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
     <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

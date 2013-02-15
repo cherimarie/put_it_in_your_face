@@ -20,8 +20,16 @@
     <%= f.text_field :serving %>
   </div>
   <div class="field">
-    <%= f.label :nutritional_info %><br />
-    <%= f.text_area :nutritional_info %>
+    <%= f.label :calories %><br />
+    <%= f.text_field :calories %>
+  </div>
+  <div class="field">
+    <%= f.label :protein %> in g<br />
+    <%= f.text_field :protein %>
+  </div>
+  <div class="field">
+    <%= f.label :calcium %> in mg<br />
+    <%= f.text_field :calcium %>
   </div>
   <div class="actions">
     <%= f.submit %>
