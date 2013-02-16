@@ -15,7 +15,7 @@
 <% @ingredients.each do |ingredient| %>
   <tr>
     <td><%= link_to ingredient.name, ingredient %></td>
-    <td><%= ingredient.serving %></td>
+    <td><%= ingredient.serving_count %><%= ingredient.serving_unit %></td>
     <td><%= ingredient.calories %></td>
     <td><%= ingredient.protein %></td>
     <td><%= ingredient.calcium %></td>

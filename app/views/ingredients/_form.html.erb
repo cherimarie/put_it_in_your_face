@@ -16,8 +16,15 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :serving %><br />
-    <%= f.text_field :serving %>
+    Serving<br />
+    <span style="display: none;">
+      <%= f.label :serving_count %>
+    </span>
+    <%= f.text_field :serving_count %>
+    <span style="display: none;">
+      <%= f.label :serving_unit %>
+    </span>
+    <%= f.select :serving_unit, options_for_select([["cup", "cup"], ["oz", "oz"], ["tbsp", "tbsp"], ["tsp", "tsp"], ["gram", "gram"], ["whole", "whole"], ["pinch", "pinch"]]) %>
   </div>
   <div class="field">
     <%= f.label :calories %><br />
