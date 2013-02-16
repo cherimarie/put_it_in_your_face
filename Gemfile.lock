@@ -178,7 +178,7 @@ DEPENDENCIES
   factory_girl (= 2.6.4)
   jquery-rails
   launchy
-  pg
+  pg (= 0.14.1)
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)
