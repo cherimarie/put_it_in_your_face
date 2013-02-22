@@ -1,5 +1,5 @@
 Feature: Email
-Users get weekly emails with their personalized meal plans and shopping lists
+  Users get weekly emails with their personalized meal plans and shopping lists
 
 	Scenario: The user's weekly email will contain meal plans and shopping list specific to their needs.
 		Given I have an account
