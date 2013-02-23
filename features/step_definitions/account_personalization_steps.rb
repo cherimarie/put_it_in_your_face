@@ -1,49 +1,27 @@
-You can implement step definitions for undefined steps with these snippets:
-
-Given /^I have signed up for a new account$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-When /^I complete the sign up process, I am taken to a "(.*?)" page$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I can set the number of humans in my household$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^for each human I can select a size$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^for each human I can select dietary restrictions$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I can save my settings$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 Given /^I have an account$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-When /^I sign in$/ do
+Given /^my preferences are set to one human, size medium, with no dietary restrictions$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^I can go to my "(.*?)" page$/ do |arg1|
+Then /^my weekly meal plan will contain a list of (\d+) meals$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^I can change the number of humans in my household$/ do
+Then /^at least (\d+) of the meals will be unique$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^for each human I can change the size$/ do
+Then /^the ingredients for each meal will total between (\d+) and (\d+) calories$/ do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^for each human I can change the dietary restrictions$/ do
+Then /^the ingredients for each meal will total between (\d+) and (\d+)g of protein$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^the ingredients for each meal will total between (\d+) and (\d+)mg of calcium$/ do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
