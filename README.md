@@ -3,6 +3,8 @@ put_it_in_your_face
 
 A delightful app to help you figure out what, exactly, you should put in your face. Ideal for slackers or others who can't be bothered to think too hard about meal planning.
 
+This app is still under construction as of February 2013.
+
 ##Standard Features
 
 These are the features it offers:
