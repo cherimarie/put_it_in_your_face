@@ -7,7 +7,7 @@ class IngredientList < ActiveRecord::Base
 
    def generate(args)
   	ingredients = Ingredients.all
-
+#put it back in controller
   	puts ingredients.sample.calories
 
   end

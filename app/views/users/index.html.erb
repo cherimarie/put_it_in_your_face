@@ -1,2 +1,21 @@
 <h2>Slacker Meals</h2>
 <em>slackers gotta eat!</em>
+<% if user_signed_in? %>
+	<h2>Please choose the size of your human<h2>
+
+		<%= form_for @user, :url => root_path do |f| %>
+			<% sizes = { :small => 1, :medium => 2, :large => 3,
+						 :extra_large => 4 } %>
+			<% sizes.each do |key, value| %>
+				<%= f.check_box :size %>
+				<%= f.label key %><br />
+			<% end %>
+
+
+
+			<%= f.submit %>
+		<% end %>
+		<%#= check_box :medium %>
+		<%#= label :medium, "What size are they?" %>
+		<%#= button("Get a Meal") %>
+<% end %>
