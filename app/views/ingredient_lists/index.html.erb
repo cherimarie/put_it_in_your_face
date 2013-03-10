@@ -1,5 +1,47 @@
-<h1>Listing ingredient_lists</h1>
+<% if @protein < @med_protein_floor %>
+  Not enough protein.
+<% elsif @protein > @med_protein_ceiling %>
+  TOO MUCH PROTEIN!
+<% else %>
+  Just enough protein. Yay!
+<% end %>
 
+<% if @calcium < @med_calcium_floor %>
+  Not enough calcium.
+<% elsif @calcium > @med_calcium_ceiling %>
+  TOO MUCH calcium!
+<% else %>
+  Just enough calcium. Yay!
+<% end %>
+
+Total calories: <%= @calories %>
+Total calcium: <%= @calcium %>
+Total protein: <%= @protein %>
+
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>calories</th>
+    <th>protein</th>
+    <th>calcium</th>
+    <th>serving unit</th>
+    <th>serving count</th>
+  </tr>
+
+  <% @random_ingredients.each do |ingredient|%>
+    <tr>
+      <th><%= ingredient.name           %></th>
+      <th><%= ingredient.calories       %></th>
+      <th><%= ingredient.protein        %></th>
+      <th><%= ingredient.calcium        %></th>
+      <th><%= ingredient.serving_unit   %></th>
+      <th><%= ingredient.serving_count  %></th>
+    </tr>
+  <% end %>
+</table>
+
+<h1>Listing ingredient_lists</h1>
 <table>
   <tr>
     <th>Ingredient</th>

@@ -2,6 +2,8 @@ class IngredientListsController < ApplicationController
   # GET /ingredient_lists
   # GET /ingredient_lists.json
   before_filter :find_all_ingredients
+  before_filter :generate, :only => [:index, :show]
+
 
   def index
     @ingredient_lists = IngredientList.all
@@ -86,5 +88,44 @@ class IngredientListsController < ApplicationController
   protected
   def find_all_ingredients
     @ingredients = Ingredient.all
+  end
+
+  def generate
+    find_all_ingredients
+
+    @med_calories_ceiling = 750
+    @med_calories_floor   = 600
+    @med_calcium_ceiling  = 375
+    @med_calcium_floor    = 275
+    @med_protein_ceiling  =  20
+    @med_protein_floor    =  10
+
+    loop do
+      @random_ingredients = find_some_ingredients_with_calories(@ingredients.shuffle,
+                                                                @med_calories_ceiling,
+                                                                @med_calories_floor)
+      meets_protein_requirements = @protein > @med_protein_floor &&
+                                   @protein < @med_protein_ceiling
+      meets_calcium_requirements = @calcium > @med_calcium_floor &&
+                                   @calcium < @med_calcium_ceiling
+      break if meets_protein_requirements && meets_calcium_requirements
+    end
+  end
+
+  def find_some_ingredients_with_calories(ingredients, ceiling, floor)
+    random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+
+    ingredients.each do |ingredient|
+      random_ingredients << ingredient
+      @calories += ingredient.calories
+      @calcium  += ingredient.calcium
+      @protein  += ingredient.protein
+
+      random_ingredients, @calories = [], 0 if @calories > ceiling
+
+      break if @calories > floor
+    end
+
+    return random_ingredients
   end
 end

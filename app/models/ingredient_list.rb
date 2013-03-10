@@ -5,12 +5,6 @@ class IngredientList < ActiveRecord::Base
   belongs_to :recipes
 
 
-   def generate(args)
-  	ingredients = Ingredients.all
-#put it back in controller
-  	puts ingredients.sample.calories
-
-  end
-
+#####
 
 end

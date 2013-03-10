@@ -1,3 +1,4 @@
+<div class="show_item">
 <p>
   <b>Name:</b>
   <%= @ingredient.name %>
@@ -18,6 +19,7 @@
   <b>Calcium (mg):</b>
   <%= @ingredient.calcium %>
 </p>
+</div>
 
 <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
 <%= link_to 'Back', ingredients_path %>
