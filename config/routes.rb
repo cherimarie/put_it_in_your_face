@@ -1,7 +1,10 @@
 PutItInYourFace::Application.routes.draw do
-  devise_for :users
 
-  root :to => "users#index"
+ # devise_for :users do
+ #   get 'users', :to => 'ingredient_lists#show', :as => :user_root
+ # end
+
+  root :to => "ingredient_lists#new"
 
   resources :recipes
 

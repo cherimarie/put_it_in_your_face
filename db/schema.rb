@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305025728) do
+ActiveRecord::Schema.define(:version => 20130310224133) do
 
   create_table "ingredient_lists", :force => true do |t|
     t.integer  "ingredient_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130305025728) do
     t.integer  "calories"
     t.float    "protein"
     t.float    "calcium"
+    t.integer  "size"
   end
 
   create_table "ingredients", :force => true do |t|

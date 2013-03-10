@@ -1,27 +1,11 @@
-<% if @protein < @med_protein_floor %>
-  Not enough protein.
-<% elsif @protein > @med_protein_ceiling %>
-  TOO MUCH PROTEIN!
-<% else %>
-  Just enough protein. Yay!
-<% end %>
+<h2>Slacker Meals</h2>
+<em>slackers gotta eat!</em>
 
-<% if @calcium < @med_calcium_floor %>
-  Not enough calcium.
-<% elsif @calcium > @med_calcium_ceiling %>
-  TOO MUCH calcium!
-<% else %>
-  Just enough calcium. Yay!
-<% end %>
-
-Total calories: <%= @calories %>
-Total calcium: <%= @calcium %>
-Total protein: <%= @protein %>
-
+<h1>Here's what you should eat</h1>
 
 <table>
   <tr>
-    <th>name</th>
+    <th>item</th>
     <th>calories</th>
     <th>protein</th>
     <th>calcium</th>
@@ -39,27 +23,17 @@ Total protein: <%= @protein %>
       <th><%= ingredient.serving_count  %></th>
     </tr>
   <% end %>
-</table>
 
-<h1>Listing ingredient_lists</h1>
-<table>
   <tr>
-    <th>Ingredient</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>totals</th>
+    <th><%= @calories.round(2) %></th>
+    <th><%= @protein.round(2) %> </th>
+    <th><%= @calcium.round(2) %> </th>
+    <th>                </th>
+    <th>                </th>
   </tr>
-
-<% @ingredient_lists.each do |ingredient_list| %>
-  <tr>
-    <td><%= ingredient_list.ingredient_id %></td>
-    <td><%= link_to 'Show', ingredient_list %></td>
-    <td><%= link_to 'Edit', edit_ingredient_list_path(ingredient_list) %></td>
-    <td><%= link_to 'Destroy', ingredient_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ingredient list', new_ingredient_list_path %>
+<%= link_to 'Give me a different meal', ingredient_lists_path %>

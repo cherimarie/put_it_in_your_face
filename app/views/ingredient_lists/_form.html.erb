@@ -1,24 +1,38 @@
+
+
+  <h2>How big is the human you need to feed? <h2>
+
+<h4>
+    <%= form_for @ingredient_list,
+                :url => new_ingredient_list_path do |f| %>
+      <% sizes = { :small => 0, :medium => 1, :large => 2,
+             :extra_large => 3 } %>
+      <% sizes.each do |key, value| %>
+        <%= f.check_box :size %>
+        <%= f.label key %><br />
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+</h4>
+
+
+
+
+
+
 <%= form_for(@ingredient_list) do |f| %>
   <% if @ingredient_list.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ingredient_list.errors.count, "error") %> prohibited this ingredient_list from being saved:</h2>
 
       <ul>
-      <% @ingredient_list.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @ingredient_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ingredient_id %><br />
-    <%= f.number_field :ingredient_id %>
-    <% @ingredients.each do |ingredient| %>
-      <%= check_box_tag "option-#{ingredient.id}", ingredient.name, ingredient.id %>
-      <%= debug ingredient %>
-    <% end %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
