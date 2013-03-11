@@ -48,6 +48,20 @@ Insert into main.Ingredients (name, created_at, updated_at, calories, protein, c
 Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('ice cream sandwich', 20130221114933, 20130221114933, 166, 3, 60, 1, 'whole');
 Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('medium sized baked sweet potato', 20130221114933, 20130221114933, 105, 2.3, 43.3, 1, 'whole');
 Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('medium sized baked potato', 20130221114933, 20130221114933, 161, 4.3, 26, 1, 'whole');
+#added 3/10/13
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('butter', 20130221114933, 20130221114933, 102, .1, 3.4, 1, 'tbsp');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('orange juice', 20130221114933, 20130221114933, 111, .3, 289.7, 8, 'oz');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('reeses peanut butter cups', 20130221114933, 20130221114933, 232, 4.6, 35.1, 2, 'whole');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('french fries', 20130221114933, 20130221114933, 404, 6.8, 26.6, 20, 'whole');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('elbow macaroni', 20130221114933, 20130221114933, 221, 8.1, 9.8, 1, 'cup');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('salami slices', 20130221114933, 20130221114933, 101, 5.4, 7.6, 3, 'whole');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('bacon slices', 20130221114933, 20130221114933, 260, 17.8, 5.3, 6, 'whole');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('popcorn', 20130221114933, 20130221114933, 165, 3, 3.3, 3, 'cups');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('Triscuit crackers', 20130221114933, 20130221114933, 120, 3, 10.1, 6, 'whole');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('peanut butter', 20130221114933, 20130221114933, 188, 8, 13.8, 2, 'tbsp');
+
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('', 20130221114933, 20130221114933, , , , , '');
+Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('', 20130221114933, 20130221114933, , , , , '');
 Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('', 20130221114933, 20130221114933, , , , , '');
 Insert into main.Ingredients (name, created_at, updated_at, calories, protein, calcium, serving_count, serving_unit) values ('', 20130221114933, 20130221114933, , , , , '');
 

@@ -1,10 +1,14 @@
-<h2>Slacker Meals</h2>
-<em>slackers gotta eat!</em>
+<h2 class="headline">Slacker Meals</h2>
+<br />
+<p class="headline">slackers gotta eat!</p>
+
+<br />
+<br />
 
 <h1>Here's what you should eat</h1>
 
 <table>
-  <tr>
+  <tr class="highlight">
     <th>item</th>
     <th>calories</th>
     <th>protein</th>
@@ -24,7 +28,7 @@
     </tr>
   <% end %>
 
-  <tr>
+  <tr class="highlight">
     <th>totals</th>
     <th><%= @calories.round(2) %></th>
     <th><%= @protein.round(2) %> </th>
