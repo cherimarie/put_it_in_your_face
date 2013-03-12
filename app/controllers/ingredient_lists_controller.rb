@@ -2,7 +2,7 @@ class IngredientListsController < ApplicationController
   # GET /ingredient_lists
   # GET /ingredient_lists.json
   before_filter :find_all_ingredients
-  # before_filter :generate, :only => [:index]
+  before_filter :generate, :only => [:index]
 
 
   def index
@@ -94,46 +94,83 @@ class IngredientListsController < ApplicationController
   end
 
   def generate(size = 1)
-    find_all_ingredients
-    @size = size.to_i
+    @calories_ceiling = [693,  910,  1083, 1300][size]
+    @calories_floor   = [426,  560,  666,  800 ][size]
+    @calcium_ceiling  = [390,  390,  390,  390 ][size]
+    @calcium_floor    = [240,  240,  240,  240 ][size]
+    @protein_ceiling  = [7.8,  16.9, 13.4, 16  ][size]
+    @protein_floor    = [12.6, 10.4, 21.7, 26  ][size]
 
-    # 80% - 130% of ideal for each
-    @calories_ceiling = [693,  910,  1083, 1300][@size]
-    @calories_floor   = [426,  560,  666,  800 ][@size]
-    @calcium_ceiling  = [390,  390,  390,  390 ][@size]
-    @calcium_floor    = [240,  240,  240,  240 ][@size]
-    @protein_ceiling  = [7.8,  16.9, 13.4, 16  ][@size]
-    @protein_floor    = [12.6, 10.4, 21.7, 26  ][@size]
-
-    count = 0
     loop do
-      count += 1
-      @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
-
-      @ingredients.each do |ingredient|
-        @random_ingredients << ingredient
-        @calories += ingredient.calories
-        @calcium  += ingredient.calcium
-        @protein  += ingredient.protein
-
-        if @calories > @calories_ceiling
-          @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
-        end
-
-        break if @calories > @calories_floor
-      end
-
+      @random_ingredients = find_some_ingredients_with_calories(@ingredients.shuffle,
+                                                                @calories_ceiling,
+                                                                @calories_floor)
       meets_protein_requirements = @protein > @protein_floor &&
                                    @protein < @protein_ceiling
       meets_calcium_requirements = @calcium > @calcium_floor &&
                                    @calcium < @calcium_ceiling
       break if meets_protein_requirements && meets_calcium_requirements
-      break if count > 1000
     end
-
-
-    count > 1000 ? @random_ingredients : "Loop too deep, dude!"
   end
 
+  def find_some_ingredients_with_calories(ingredients, ceiling, floor)
+    random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+
+    ingredients.each do |ingredient|
+      random_ingredients << ingredient
+      @calories += ingredient.calories
+      @calcium  += ingredient.calcium
+      @protein  += ingredient.protein
+
+      random_ingredients, @calories = [], 0 if @calories > ceiling
+
+      break if @calories > floor
+    end
+
+    return random_ingredients
+  end
+
+#  def generate(size = 1)
+#    find_all_ingredients
+#    @size = size.to_i
+#
+#    # 80% - 130% of ideal for each
+#    @calories_ceiling = [693,  910,  1083, 1300][@size]
+#    @calories_floor   = [426,  560,  666,  800 ][@size]
+#    @calcium_ceiling  = [390,  390,  390,  390 ][@size]
+#    @calcium_floor    = [240,  240,  240,  240 ][@size]
+#    @protein_ceiling  = [7.8,  16.9, 13.4, 16  ][@size]
+#    @protein_floor    = [12.6, 10.4, 21.7, 26  ][@size]
+#
+#    count = 0
+#    loop do
+#      count += 1
+#      @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+#
+#      @ingredients.each do |ingredient|
+#        @random_ingredients << ingredient
+#        @calories += ingredient.calories
+#        @calcium  += ingredient.calcium
+#        @protein  += ingredient.protein
+#
+#        if @calories > @calories_ceiling
+#          @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+#        end
+#
+#        break if @calories > @calories_floor
+#      end
+#
+#      meets_protein_requirements = @protein > @protein_floor &&
+#                                   @protein < @protein_ceiling
+#      meets_calcium_requirements = @calcium > @calcium_floor &&
+#                                   @calcium < @calcium_ceiling
+#      break if meets_protein_requirements && meets_calcium_requirements
+#      break if count > 1000
+#    end
+#
+#
+#    count > 1000 ? @random_ingredients : "Loop too deep, dude!"
+#  end
+#
 
 end
