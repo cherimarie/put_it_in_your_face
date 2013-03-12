@@ -1,14 +1,14 @@
-<h2 class="headline">Slacker Meals</h2>
-<br />
-<p class="headline">slackers gotta eat!</p>
 
 <br />
 <br />
 
-<h1>Here's what you should eat</h1>
+<h2>Eat this, it's totally good for you</h2>
 
 <%= render "ingredients_table" %>
 
 <br />
 
-<%= link_to 'Give me a different meal', ingredient_lists_path %>
+<div class="button_nav">
+  <%= link_to 'Give me a different meal', ingredient_lists_path %>
+  <%= link_to 'Back', root_path %>
+</div>

@@ -1,7 +1,14 @@
-<h2>Eat this and live</h2>
+<br />
+<br />
+
+<h2>Eat this, it's totally good for you</h2>
+
 
 <%= render "ingredients_table" %>
 
+<br />
 
-<%= link_to 'Give me a different meal', ingredient_list_path(@ingredient_list) %> |
-<%= link_to 'Back', root_path %>
+<div class="button_nav">
+  <%= link_to 'Give me a different meal', ingredient_list_path(@ingredient_list) %> |
+  <%= link_to 'Back', root_path %>
+</div>

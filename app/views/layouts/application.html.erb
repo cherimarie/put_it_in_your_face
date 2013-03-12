@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<div id="head">
+<h1>Slacker Meals</h1>
+<p>Find something good to eat without having to think too hard about it</p>
+</div>
+
 <% flash.each do |key, value| %>
 	<div class='flash' id='<%= key %>'>
 		<%= value %>
@@ -16,6 +21,11 @@
 <% end %>
 
 <%= yield %>
+
+<div id="foot">
+	<p>test</p>
+ <%#= link_to 'About', about_path %>
+  <end>
 
 </body>
 </html>
