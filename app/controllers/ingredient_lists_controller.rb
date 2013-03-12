@@ -2,7 +2,7 @@ class IngredientListsController < ApplicationController
   # GET /ingredient_lists
   # GET /ingredient_lists.json
   before_filter :find_all_ingredients
-  before_filter :generate, :only => [:index, :show]
+  # before_filter :generate, :only => [:index]
 
 
   def index
@@ -44,11 +44,10 @@ class IngredientListsController < ApplicationController
   # POST /ingredient_lists
   # POST /ingredient_lists.json
   def create
-    @ingredient_list = IngredientList.new(params[:ingredient_list])
-    size = params[:ingredient_list][:size]
-    @ingredient_list.update_attributes(:size => size)
-
-    generate
+    @ingredient_list = IngredientList.new(:size => params[:ingredient_list][:size],
+                                          :protein => 9,
+                                          :calcium => 9,
+                                          :calories => 9 )
 
     respond_to do |format|
       if @ingredient_list.save

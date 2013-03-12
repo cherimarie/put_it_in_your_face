@@ -36,19 +36,6 @@
     <th><%= @protein.round(2) %> </th>
     <th><%= @calcium.round(2) %> </th>
   </tr>
-
-
-   <% @random_ingredients.each do |ingredient|%>
-    <tr>
-      <th><%= ingredient.serving_count  %></th>
-      <th></th>
-      <th><%= ingredient.name           %></th>
-      <th><%= ingredient.calories       %></th>
-      <th><%= ingredient.protein        %></th>
-      <th><%= ingredient.calcium        %></th>
-    </tr>
-  <% end %>
-
 </table>
 
 <br />
