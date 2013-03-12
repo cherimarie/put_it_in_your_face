@@ -1,10 +1,47 @@
-<%= debug params %>
-<%= debug @ingredient_list %>
 
-<p>
-  <b>Ingredient:</b>
-  <%= @ingredient_list.ingredient_id %>
-</p>
+<h2 class="headline">Slacker Meals</h2>
+<br />
+<p class="headline">slackers gotta eat!</p>
+
+<br />
+<br />
+
+<h1>Here's what you should eat</h1>
+
+<table>
+  <tr class="highlight">
+    <th>item</th>
+    <th>calories</th>
+    <th>protein</th>
+    <th>calcium</th>
+    <th>serving unit</th>
+    <th>serving count</th>
+  </tr>
+
+  <% @random_ingredients.each do |ingredient|%>
+    <tr>
+      <th><%= ingredient.name           %></th>
+      <th><%= ingredient.calories       %></th>
+      <th><%= ingredient.protein        %></th>
+      <th><%= ingredient.calcium        %></th>
+      <th><%= ingredient.serving_unit   %></th>
+      <th><%= ingredient.serving_count  %></th>
+    </tr>
+  <% end %>
+
+  <tr class="highlight">
+    <th>totals</th>
+    <th><%= @calories.round(2) %></th>
+    <th><%= @protein.round(2) %> </th>
+    <th><%= @calcium.round(2) %> </th>
+    <th>                </th>
+    <th>                </th>
+  </tr>
+</table>
+
+<br />
+
+<%= link_to 'Give me a different meal', ingredient_lists_path %>
 
 
 <%= link_to 'Edit', edit_ingredient_list_path(@ingredient_list) %> |

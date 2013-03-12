@@ -4,8 +4,8 @@
     <%= form_for @ingredient_list do |f| %>
       <% sizes = { :small => 0, :medium => 1, :large => 2,
              :extra_large => 3 } %>
-      <%= select("post", "size", sizes) %>
-      </br>
+      <%= select_tag('size', options_for_select(sizes) ) %>
+      <br/>
       <%= f.submit %>
     <% end %>
 </h4>

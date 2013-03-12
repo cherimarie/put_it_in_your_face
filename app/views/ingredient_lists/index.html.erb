@@ -13,18 +13,18 @@
     <th>calories</th>
     <th>protein</th>
     <th>calcium</th>
-    <th>serving unit</th>
-    <th>serving count</th>
   </tr>
 
   <% @random_ingredients.each do |ingredient|%>
-    <tr>
-      <th><%= ingredient.name           %></th>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <th>
+        <%= number_to_human ingredient.serving_count  %>
+        <%= ingredient.serving_unit   %>
+        <%= ingredient.name           %>
+      </th>
       <th><%= ingredient.calories       %></th>
       <th><%= ingredient.protein        %></th>
       <th><%= ingredient.calcium        %></th>
-      <th><%= ingredient.serving_unit   %></th>
-      <th><%= ingredient.serving_count  %></th>
     </tr>
   <% end %>
 
