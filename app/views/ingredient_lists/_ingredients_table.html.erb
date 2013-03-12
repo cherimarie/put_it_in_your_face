@@ -1,0 +1,28 @@
+<table>
+  <tr class="highlight">
+    <th>item</th>
+    <th>calories</th>
+    <th>protein</th>
+    <th>calcium</th>
+  </tr>
+
+  <% @random_ingredients.each do |ingredient|%>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <th>
+        <%= number_to_human ingredient.serving_count  %>
+        <%= ingredient.serving_unit   %>
+        <%= ingredient.name           %>
+      </th>
+      <th><%= ingredient.calories       %></th>
+      <th><%= ingredient.protein        %></th>
+      <th><%= ingredient.calcium        %></th>
+    </tr>
+  <% end %>
+
+  <tr class="highlight">
+    <th>totals</th>
+    <th><%= @calories.round(2) %></th>
+    <th><%= @protein.round(2) %> </th>
+    <th><%= @calcium.round(2) %> </th>
+  </tr>
+</table>

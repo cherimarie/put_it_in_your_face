@@ -1,23 +1,6 @@
-<p>
-  <b>Ingredient List ID:</b>
-  <%= @ingredient_list.id %>
-</p>
-<p>
-  <b>Protein:</b>
-  <%= @ingredient_list.protein %>
-</p>
-<p>
-  <b>Calcium:</b>
-  <%= @ingredient_list.calcium %>
-</p>
-<p>
-  <b>Calories:</b>
-  <%= @ingredient_list.calories %>
-</p>
-<p>
-  <b>SizeIngredient List ID:</b>
-  <%= @ingredient_list.size %>
-</p>
+<h2>Eat this (or die!)</h2>
+
+<%= render "ingredients_table" %>
 
 <%= link_to 'Edit', edit_ingredient_list_path(@ingredient_list) %> |
 <%= link_to 'Back', ingredient_lists_path %>

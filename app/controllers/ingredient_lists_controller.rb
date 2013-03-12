@@ -19,6 +19,8 @@ class IngredientListsController < ApplicationController
   def show
     @ingredient_list = IngredientList.find(params[:id])
 
+    generate(@ingredient_list.size)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ingredient_list }
@@ -44,10 +46,8 @@ class IngredientListsController < ApplicationController
   # POST /ingredient_lists
   # POST /ingredient_lists.json
   def create
-    @ingredient_list = IngredientList.new(:size => params[:ingredient_list][:size],
-                                          :protein => 9,
-                                          :calcium => 9,
-                                          :calories => 9 )
+    size = params[:ingredient_list][:size]
+    @ingredient_list = IngredientList.new(:size => size)
 
     respond_to do |format|
       if @ingredient_list.save
