@@ -9,33 +9,46 @@
 
 <table>
   <tr class="highlight">
+    <th>serving count</th>
+    <th>serving unit</th>
     <th>item</th>
     <th>calories</th>
     <th>protein</th>
     <th>calcium</th>
-    <th>serving unit</th>
-    <th>serving count</th>
   </tr>
 
   <% @random_ingredients.each do |ingredient|%>
     <tr>
+      <th><%= ingredient.serving_count  %></th>
+      <th><%= ingredient.serving_unit   %></th>
       <th><%= ingredient.name           %></th>
       <th><%= ingredient.calories       %></th>
       <th><%= ingredient.protein        %></th>
       <th><%= ingredient.calcium        %></th>
-      <th><%= ingredient.serving_unit   %></th>
-      <th><%= ingredient.serving_count  %></th>
     </tr>
   <% end %>
 
   <tr class="highlight">
+    <th>                </th>
+    <th>                </th>
     <th>totals</th>
     <th><%= @calories.round(2) %></th>
     <th><%= @protein.round(2) %> </th>
     <th><%= @calcium.round(2) %> </th>
-    <th>                </th>
-    <th>                </th>
   </tr>
+
+
+   <% @random_ingredients.each do |ingredient|%>
+    <tr>
+      <th><%= ingredient.serving_count  %></th>
+      <th></th>
+      <th><%= ingredient.name           %></th>
+      <th><%= ingredient.calories       %></th>
+      <th><%= ingredient.protein        %></th>
+      <th><%= ingredient.calcium        %></th>
+    </tr>
+  <% end %>
+
 </table>
 
 <br />

@@ -45,6 +45,10 @@ class IngredientListsController < ApplicationController
   # POST /ingredient_lists.json
   def create
     @ingredient_list = IngredientList.new(params[:ingredient_list])
+    size = params[:ingredient_list][:size]
+    @ingredient_list.update_attributes(:size => size)
+
+    generate
 
     respond_to do |format|
       if @ingredient_list.save
@@ -128,4 +132,67 @@ class IngredientListsController < ApplicationController
 
     return random_ingredients
   end
+
+  def get_range
+    # 80% - 130% of ideal for each
+    @sm_calories_ceiling = 693
+    @sm_calories_floor   = 426
+    @sm_calcium_ceiling  = 390
+    @sm_calcium_floor    = 240
+    @sm_protein_ceiling  = 7.8
+    @sm_protein_floor    = 12.6
+
+    @med_calories_ceiling = 910
+    @med_calories_floor   = 560
+    @med_calcium_ceiling  = 390
+    @med_calcium_floor    = 240
+    @med_protein_ceiling  = 16.9
+    @med_protein_floor    = 10.4
+
+    @lg_calories_ceiling = 880
+    @lg_calories_floor   = 730
+    @lg_calcium_ceiling  = 375
+    @lg_calcium_floor    = 275
+    @lg_protein_ceiling  =
+    @lg_protein_floor    =  10
+
+    @xl_calories_ceiling = 750
+    @xl_calories_floor   = 600
+    @xl_calcium_ceiling  = 375
+    @xl_calcium_floor    = 275
+    @xl_protein_ceiling  =  20
+    @xl_protein_floor    =  10
+
+   # thing coming in from form,
+    if 0 then  @calo_ceiling = @sm_calories_ceiling &&
+                @calo_floor = @sm_calories_floor &&
+                @pro_ceiling = @sm_protein_ceiling &&
+                @pro_floor = @sm_protein_floor &&
+                @calc_ceiling = @sm_calcium_ceiling &&
+                @calc_floor = @sm_calcium_floor
+
+    elsif 1 then @calo_ceiling = @med_calories_ceiling &&
+                  @calo_floor = @med_calories_floor &&
+                  @pro_ceiling = @med_protein_ceiling &&
+                  @pro_floor = @med_protein_floor &&
+                  @calc_ceiling = @med_calcium_ceiling &&
+                  @calc_floor = @med_calcium_floor
+
+    elsif 2 then @calo_ceiling = @lg_calories_ceiling &&
+                  @calo_floor = @lg_calories_floor &&
+                  @pro_ceiling = @lg_protein_ceiling &&
+                  @pro_floor = @lg_protein_floor &&
+                  @calc_ceiling = @lg_calcium_ceiling &&
+                  @calc_floor = @lg_calcium_floor
+
+    elsif 3 then @calo_ceiling = @xl_calories_ceiling &&
+                  @calo_floor = @xl_calories_floor &&
+                  @pro_ceiling = @xl_protein_ceiling &&
+                  @pro_floor = @xl_protein_floor &&
+                  @calc_ceiling = @xl_calcium_ceiling &&
+                  @calc_floor = @xl_calcium_floor
+
+  end
+end
+
 end
