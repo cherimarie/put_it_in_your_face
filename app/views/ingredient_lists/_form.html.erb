@@ -1,12 +1,14 @@
 <h2>How big is the human you need to feed? <h2>
 
 <h4>
-    <%= form_for @ingredient_list do |f| %>
-      <% sizes = { :small => 0, :medium => 1, :large => 2,
-             :extra_large => 3 } %>
-      <%= select_tag('size', options_for_select(sizes) ) %>
-      <br/>
-      <%= f.submit %>
-    <% end %>
+<%= form_for :ingredient_list, url: {action: :create} do |f| %>
+    <% size_choice = { :small => 0, :medium => 1, :large => 2,
+                 :extra_large => 3 } %>
+  <p>
+    <%= f.select(:size, size_choice )%>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 </h4>
-

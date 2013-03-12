@@ -2,10 +2,9 @@
 	color: pink;
 }
 table {
-	border: 1px, solid, gray;
+	width: 75%;
 }
 th {
-	width: 10%;
 	padding: 5px;
 }
 .headline {
@@ -14,6 +13,7 @@ th {
 }
 p.headline {
 	font-style: italic;
+	clear: all;
 }
 .odd {
   background: mistyrose;
