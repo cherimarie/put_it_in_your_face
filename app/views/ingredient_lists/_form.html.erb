@@ -1,7 +1,7 @@
 <br />
 <br />
 
-<h2>How big are you? <h2>
+<h2>How big are you? </h2>
 
 <%= form_for :ingredient_list, url: {action: :create} do |f| %>
     <% size_choice = { :small => 0, :medium => 1, :large => 2,
@@ -10,6 +10,7 @@
     <%= f.select(:size, size_choice )%>
   </p>
   <br />
+
   <div class="button_nav">
     <%= f.submit "Go. Feed me. Whatev." %>
   </div>
