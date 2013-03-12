@@ -1,6 +1,7 @@
-<h2>Eat this (or die!)</h2>
+<h2>Eat this and live</h2>
 
 <%= render "ingredients_table" %>
 
-<%= link_to 'Edit', edit_ingredient_list_path(@ingredient_list) %> |
-<%= link_to 'Back', ingredient_lists_path %>
+
+<%= link_to 'Give me a different meal', ingredient_list_path(@ingredient_list) %> |
+<%= link_to 'Back', root_path %>

@@ -51,7 +51,7 @@ class IngredientListsController < ApplicationController
 
     respond_to do |format|
       if @ingredient_list.save
-        format.html { redirect_to @ingredient_list, notice: 'Ingredient list was successfully created.' }
+        format.html { redirect_to @ingredient_list, notice: '' }
         format.json { render json: @ingredient_list, status: :created, location: @ingredient_list }
       else
         format.html { render action: "new" }
