@@ -14,6 +14,8 @@ PutItInYourFace::Application.routes.draw do
 
   resources :apocalypse
 
+  resources :static
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
