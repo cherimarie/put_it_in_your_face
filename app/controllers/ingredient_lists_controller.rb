@@ -93,105 +93,47 @@ class IngredientListsController < ApplicationController
     @ingredients = Ingredient.all
   end
 
-  def generate
+  def generate(size = 1)
     find_all_ingredients
+    @size = size.to_i
 
-    @med_calories_ceiling = 750
-    @med_calories_floor   = 600
-    @med_calcium_ceiling  = 375
-    @med_calcium_floor    = 275
-    @med_protein_ceiling  =  20
-    @med_protein_floor    =  10
-
-    loop do
-      @random_ingredients = find_some_ingredients_with_calories(@ingredients.shuffle,
-                                                                @med_calories_ceiling,
-                                                                @med_calories_floor)
-      meets_protein_requirements = @protein > @med_protein_floor &&
-                                   @protein < @med_protein_ceiling
-      meets_calcium_requirements = @calcium > @med_calcium_floor &&
-                                   @calcium < @med_calcium_ceiling
-      break if meets_protein_requirements && meets_calcium_requirements
-    end
-  end
-
-  def find_some_ingredients_with_calories(ingredients, ceiling, floor)
-    random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
-
-    ingredients.each do |ingredient|
-      random_ingredients << ingredient
-      @calories += ingredient.calories
-      @calcium  += ingredient.calcium
-      @protein  += ingredient.protein
-
-      random_ingredients, @calories = [], 0 if @calories > ceiling
-
-      break if @calories > floor
-    end
-
-    return random_ingredients
-  end
-
-  def get_range
     # 80% - 130% of ideal for each
-    @sm_calories_ceiling = 693
-    @sm_calories_floor   = 426
-    @sm_calcium_ceiling  = 390
-    @sm_calcium_floor    = 240
-    @sm_protein_ceiling  = 7.8
-    @sm_protein_floor    = 12.6
+    @calories_ceiling = [693,  910,  1083, 1300][@size]
+    @calories_floor   = [426,  560,  666,  800 ][@size]
+    @calcium_ceiling  = [390,  390,  390,  390 ][@size]
+    @calcium_floor    = [240,  240,  240,  240 ][@size]
+    @protein_ceiling  = [7.8,  16.9, 13.4, 16  ][@size]
+    @protein_floor    = [12.6, 10.4, 21.7, 26  ][@size]
 
-    @med_calories_ceiling = 910
-    @med_calories_floor   = 560
-    @med_calcium_ceiling  = 390
-    @med_calcium_floor    = 240
-    @med_protein_ceiling  = 16.9
-    @med_protein_floor    = 10.4
+    count = 0
+    loop do
+      count += 1
+      @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
 
-    @lg_calories_ceiling = 880
-    @lg_calories_floor   = 730
-    @lg_calcium_ceiling  = 375
-    @lg_calcium_floor    = 275
-    @lg_protein_ceiling  =
-    @lg_protein_floor    =  10
+      @ingredients.each do |ingredient|
+        @random_ingredients << ingredient
+        @calories += ingredient.calories
+        @calcium  += ingredient.calcium
+        @protein  += ingredient.protein
 
-    @xl_calories_ceiling = 750
-    @xl_calories_floor   = 600
-    @xl_calcium_ceiling  = 375
-    @xl_calcium_floor    = 275
-    @xl_protein_ceiling  =  20
-    @xl_protein_floor    =  10
+        if @calories > @calories_ceiling
+          @random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+        end
 
-   # thing coming in from form,
-    if 0 then  @calo_ceiling = @sm_calories_ceiling &&
-                @calo_floor = @sm_calories_floor &&
-                @pro_ceiling = @sm_protein_ceiling &&
-                @pro_floor = @sm_protein_floor &&
-                @calc_ceiling = @sm_calcium_ceiling &&
-                @calc_floor = @sm_calcium_floor
+        break if @calories > @calories_floor
+      end
 
-    elsif 1 then @calo_ceiling = @med_calories_ceiling &&
-                  @calo_floor = @med_calories_floor &&
-                  @pro_ceiling = @med_protein_ceiling &&
-                  @pro_floor = @med_protein_floor &&
-                  @calc_ceiling = @med_calcium_ceiling &&
-                  @calc_floor = @med_calcium_floor
+      meets_protein_requirements = @protein > @protein_floor &&
+                                   @protein < @protein_ceiling
+      meets_calcium_requirements = @calcium > @calcium_floor &&
+                                   @calcium < @calcium_ceiling
+      break if meets_protein_requirements && meets_calcium_requirements
+      break if count > 1000
+    end
 
-    elsif 2 then @calo_ceiling = @lg_calories_ceiling &&
-                  @calo_floor = @lg_calories_floor &&
-                  @pro_ceiling = @lg_protein_ceiling &&
-                  @pro_floor = @lg_protein_floor &&
-                  @calc_ceiling = @lg_calcium_ceiling &&
-                  @calc_floor = @lg_calcium_floor
 
-    elsif 3 then @calo_ceiling = @xl_calories_ceiling &&
-                  @calo_floor = @xl_calories_floor &&
-                  @pro_ceiling = @xl_protein_ceiling &&
-                  @pro_floor = @xl_protein_floor &&
-                  @calc_ceiling = @xl_calcium_ceiling &&
-                  @calc_floor = @xl_calcium_floor
-
+    count > 1000 ? @random_ingredients : "Loop too deep, dude!"
   end
-end
+
 
 end
