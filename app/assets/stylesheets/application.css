@@ -32,5 +32,18 @@
 	position: absolute;
 	left: 60px;
 }
+.orange {
+	background-color: #EEC971;
+}
+table {
+	margin: auto;
+	width: 75%;
+}
+th {
+	padding: 5px;
+}
+td {
+	padding: 5px;
+}
 
 
