@@ -93,45 +93,61 @@ class IngredientListsController < ApplicationController
     @ingredients = Ingredient.all
   end
 
-  def generate(size = 3)
+  def generate(size = 1)
+    @combos = find_combinations @ingredients
 
     #ranges are 80%-130% of 33% of daily recommended intake
-    @calories_ceiling = [693,  910,  1083, 1300][size]
-    @calories_floor   = [426,  560,  666,  800 ][size]
-    @calcium_ceiling  = [390,  390,  390,  390 ][size]
-    @calcium_floor    = [240,  240,  240,  240 ][size]
-    @protein_ceiling  = [12.6, 16.9, 21.7, 26  ][size]
-    @protein_floor    = [7.8,  10.4, 13.4, 16  ][size]
+    calories_ceiling = [693,  910,  1083, 1300][size]
+    calories_floor   = [426,  560,  666,  800 ][size]
+    calcium_ceiling  = [390,  390,  390,  390 ][size]
+    calcium_floor    = [240,  240,  240,  240 ][size]
+    protein_ceiling  = [12.6, 16.9, 21.7, 26  ][size]
+    protein_floor    = [7.8,  10.4, 13.4, 16  ][size]
 
-    count = 0
-    loop do
-      count += 1
-      @random_ingredients = find_some_ingredients_with_calories(@ingredients.shuffle,
-                                                                @calories_ceiling,
-                                                                @calories_floor)
-      meets_protein_requirements = @protein > @protein_floor &&
-                                   @protein < @protein_ceiling
-      meets_calcium_requirements = @calcium > @calcium_floor &&
-                                   @calcium < @calcium_ceiling
-      break if meets_protein_requirements && meets_calcium_requirements
-      break if count > 1000
+    @ingredient_lists = []
+    @combos[2].each do |ingredient_list|
+      calories = find_calories_for ingredient_list
+      calcium  = find_calcium_for  ingredient_list
+      protein  = find_protein_for  ingredient_list
+
+      next unless calories > calories_floor && calories < calories_ceiling
+      next unless calcium  > calcium_floor  && calcium  < calcium_ceiling
+      next unless protein  > protein_floor  && protein  < protein_ceiling
+
+      @ingredient_lists << ingredient_list
     end
+
+    #   count += 1
+    #   # @random_ingredients = find_some_ingredients_with_calories(@ingredients.shuffle,
+    #   #                                                           calories_ceiling,
+    #   #                                                           calories_floor)
+    #   meets_protein_requirements = @protein > protein_floor &&
+    #                                @protein < protein_ceiling
+    #   meets_calcium_requirements = @calcium > calcium_floor &&
+    #                                @calcium < calcium_ceiling
+    #   break if meets_protein_requirements && meets_calcium_requirements
+    #   break if count > 1000
+    # end
   end
 
-  def find_some_ingredients_with_calories(ingredients, ceiling, floor)
-    random_ingredients, @calories, @calcium, @protein = [], 0, 0, 0
+  def find_calories_for(ingredients)
+    ingredients.map(&:calories).inject(:+)
+  end
 
-    ingredients.each do |ingredient|
-      random_ingredients << ingredient
-      @calories += ingredient.calories
-      @calcium  += ingredient.calcium
-      @protein  += ingredient.protein
+  def find_calcium_for(ingredients)
+    ingredients.map(&:calcium).inject(:+)
+  end
 
-      random_ingredients, @calories = [], 0 if @calories > ceiling
+  def find_protein_for(ingredients)
+    ingredients.map(&:protein).inject(:+)
+  end
 
-      break if @calories > floor
+  def find_combinations(array)
+    combos = []
+    array.length.times do |number|
+      next if number == 0
+      combos << array.combination(number)
     end
-
-    return random_ingredients
+    return combos
   end
 end
