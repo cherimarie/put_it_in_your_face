@@ -5,8 +5,6 @@ File.open("#{Rails.root}/ingr.dmp") do |ingredient|
   ingredient.read.each_line do |ingredient|
   	id,
     name,
-    created_at,
-    updated_at,
      calories,
      protein,
      calcium,
