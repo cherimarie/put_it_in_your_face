@@ -16,6 +16,8 @@ PutItInYourFace::Application.routes.draw do
 
   resources :static
 
+ # devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
