@@ -5,16 +5,15 @@ File.open("#{Rails.root}/ingr.dmp") do |ingredient|
   ingredient.read.each_line do |ingredient|
   	id,
     name,
-     calories,
-     protein,
-     calcium,
-     serving_count,
-     serving_unit =
-     ingredient.chomp.split(",")
-    #  to remove the quotes from the csv text:
-    # to create each record in the database
+    calories,
+    protein,
+    calcium,
+    serving_count,
+    serving_unit =
+    ingredient.chomp.split(",")
+
     Ingredient.create!(:name => name.tr('"', ''), :calories => calories,
-    				    :protein => protein, :calcium => calcium,
-    				    :serving_count => serving_count, :serving_unit => serving_unit)
+    				           :protein => protein, :calcium => calcium,
+    				           :serving_count => serving_count, :serving_unit => serving_unit)
   end
 end

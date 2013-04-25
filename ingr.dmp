@@ -12,11 +12,11 @@
 81,"85% lean ground beef",218,23.6,18.7,3.0,oz
 83,"unsweetened apple sauce",103,0.4,9.8,1.0,cup
 84,"baked beans with franks",368,17.5,124.3,1.0,cup
-85,"kidney beans, canned",210,13.4,87.0,1.0,cup
-86,"black beans, canned",218,14.5,84.0,1.0,cup
-87,"pinto beans, canned",197,11.0,112.8,1.0,cup
-88,"garbanzo beans, canned",352,17.8,113.9,1.0,cup
-89,"refried beans, traditional style, canned",217,12.9,78.5,1.0,cup
+85,"canned kidney beans",210,13.4,87.0,1.0,cup
+86,"canned black beans",218,14.5,84.0,1.0,cup
+87,"canned pinto beans, canned",197,11.0,112.8,1.0,cup
+88,"canned garbanzo beans, canned",352,17.8,113.9,1.0,cup
+89,"canned traditional style refried beans",217,12.9,78.5,1.0,cup
 90,"nonfat fruit yogurt",216,10.0,345.0,8.0,oz
 91,"fried tofu",231,14.6,316.4,3.0,oz
 92,"silken tofu",65,6.6,99.1,5.0,oz
@@ -34,8 +34,8 @@
 104,"white pita",165,5.5,51.6,1.0,whole
 105,"slices of multigrain bread",137.8,6.9,53.6,2.0,whole
 106,"slice of french bread",185,7.5,28.2,1.0,whole
-107,"spinach, frozen",32,3.8,145.4,0.5,cup
-108,"spinach, canned",45,4.9,194.0,1.0,cup
+107,"frozen spinach",32,3.8,145.4,0.5,cup
+108,"canned spinach",45,4.9,194.0,1.0,cup
 109,"stalks of celery",19,0.8,48.0,3.0,whole
 110,"grapes",62,0.6,12.9,1.0,cup
 111,"pears, canned",116,0.7,17.3,1.0,cup
